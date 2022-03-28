@@ -1,11 +1,10 @@
 import React from "react"
 import { Link } from "gatsby"
-import Navbar from "../components/Navbar"
+import Layout from "../components/Layout"
 
-const index = () => {
+const Home = () => {
   return (
-    <div>
-      <Navbar />
+    <Layout>
       <h1>Home Page</h1>
       <div>
         <Link to="about">About</Link>
@@ -13,8 +12,8 @@ const index = () => {
       <div>
         <Link to="company/history">History</Link>
       </div>
-    </div>
+    </Layout>
   )
 }
 
-export default index
+export default Home
