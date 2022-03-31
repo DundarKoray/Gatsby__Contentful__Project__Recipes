@@ -1,13 +1,16 @@
 import React from "react"
+import Layout from "../components/Layout"
 
 const Error = () => {
   return (
-    <main class="error-page">
-      <section>
-        <h1>404</h1>
-        <h2>Page not found</h2>
-      </section>
-    </main>
+    <Layout>
+      <main className="error-page">
+        <section>
+          <h1>404</h1>
+          <h2>Page not found</h2>
+        </section>
+      </main>
+    </Layout>
   )
 }
 
