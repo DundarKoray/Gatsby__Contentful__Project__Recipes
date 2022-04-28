@@ -16,7 +16,7 @@ const Home = () => {
             layout="fullWidth"
           ></StaticImage>
           <div className="hero-container">
-            <div class="hero-text">
+            <div className="hero-text">
               <h1>Simply Recipes</h1>
               <h4>No Fluff, Just Recipes</h4>
             </div>
