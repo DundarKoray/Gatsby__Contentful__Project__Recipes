@@ -6,18 +6,16 @@ import { graphql, useStaticQuery } from "gatsby"
 const query = graphql`
   {
     allContentfulRecipe(sort: { fields: title, order: ASC }) {
-      edges {
-        node {
-          id
-          title
-          cookTime
-          prepTime
-          content {
-            tags
-          }
-          image {
-            gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
-          }
+      nodes {
+        id
+        title
+        cookTime
+        prepTime
+        content {
+          tags
+        }
+        image {
+          gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
         }
       }
     }
@@ -26,12 +24,17 @@ const query = graphql`
 
 const AllRecipes = () => {
   const data = useStaticQuery(query)
-  console.log(data)
+  // console.log(data)
+  const recipes = data.allContentfulRecipe.nodes
+  // console.log(recipes)
+
+  // this is the same
+  // const {allContentfulRecipe:{nodes: recipes}} = useStaticQuery(query)
   return (
     <div>
       <h4>AllRecipes</h4>
-      <Recipes />
-      <TagsList />
+      <Recipes recipes={recipes} />
+      <TagsList recipes={recipes} />
     </div>
   )
 }
