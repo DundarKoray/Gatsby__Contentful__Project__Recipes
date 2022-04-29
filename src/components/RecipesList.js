@@ -1,17 +1,18 @@
 import React from "react"
 import { Link } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
-
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+//getImage is for to aviod image error if there is not one
 const RecipesList = ({ recipes = [] }) => {
   return (
     <div className="recipes-list">
       {recipes.map(recipe => {
         // const { id, title, image, prepTime, cookTime } = recipe
         // return <p>{title}</p>
+        const pathToImage = getImage(recipe.image.gatsbyImageData)
         return (
           <Link key={recipe.id} to={`/${recipe.title}`} className="recipe">
             <GatsbyImage
-              image={recipe.image}
+              image={pathToImage}
               alt={recipe.title}
               className="recipe-img"
             />
