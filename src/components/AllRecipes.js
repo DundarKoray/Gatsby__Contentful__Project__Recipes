@@ -1,5 +1,5 @@
 import React from "react"
-import Recipes from "./RecipesList"
+import RecipesList from "./RecipesList"
 import TagsList from "./TagsList"
 import { graphql, useStaticQuery } from "gatsby"
 
@@ -33,7 +33,7 @@ const AllRecipes = () => {
   return (
     <section className="recipes-container">
       <h4>AllRecipes</h4>
-      <Recipes recipes={recipes} />
+      <RecipesList recipes={recipes} />
       <TagsList recipes={recipes} />
     </section>
   )
