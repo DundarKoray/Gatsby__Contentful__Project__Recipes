@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import slugify from "slugify"
 //getImage is for to aviod image error if there is not one
 const RecipesList = ({ recipes = [] }) => {
   return (
@@ -9,8 +10,9 @@ const RecipesList = ({ recipes = [] }) => {
         // const { id, title, image, prepTime, cookTime } = recipe
         // return <p>{title}</p>
         const pathToImage = getImage(recipe.image.gatsbyImageData)
+        const slug = slugify(recipe.title, { lower: true })
         return (
-          <Link key={recipe.id} to={`/${recipe.title}`} className="recipe">
+          <Link key={recipe.id} to={`/${slug}`} className="recipe">
             <GatsbyImage
               image={pathToImage}
               alt={recipe.title}
