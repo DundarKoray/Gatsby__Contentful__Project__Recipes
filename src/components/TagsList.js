@@ -7,7 +7,7 @@ const TagsList = ({ recipes }) => {
   const newTags = setupTags(recipes)
   console.log(newTags)
   return (
-    <div className="tag-container">
+    <div className="tags-container">
       <h4>Recipes</h4>
       <div className="tags-list">
         {newTags.map((tag, index) => {
