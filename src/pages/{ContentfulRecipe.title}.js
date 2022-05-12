@@ -1,20 +1,70 @@
 import React from "react"
+import { graphql } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { BsClockHistory, BsClock, BsPeople } from "react-icons/bs"
+import Layout from "../components/Layout"
 
-const RecipeTemplate = props => {
-  // console.log(props)
+const RecipeTemplate = ({ data }) => {
+  // console.log(data)
+  const {
+    title,
+    cookTime,
+    content,
+    prepTime,
+    servings,
+    description: { description },
+    image,
+  } = data.contentfulRecipe
+
+  const pathToImage = getImage(image)
+
+  const { tags, instructions, ingredients, tools } = content
+
   return (
-    <div>
-      <h2>{props.params.title}</h2>
-    </div>
+    <Layout>
+      <main className="page">
+        <div className="recipe-page">
+          {/*hero*/}
+          <section className="recipe-hero">
+            <GatsbyImage
+              image={pathToImage}
+              alt={title}
+              className="about-img"
+            />
+            <article className="recipe-info">
+              <h2>{title}</h2>
+              <p>{description}</p>
+              {/* icons */}
+            </article>
+          </section>
+          {/* rest of the content */}
+          <section className=""></section>
+        </div>
+      </main>
+    </Layout>
   )
 }
 
 export const query = graphql`
-  {
+  query getSingleRecipe($title: String) {
     contentfulRecipe(title: { eq: $title }) {
       id
       title
       cookTime
+      content {
+        ingredients
+        instructions
+        tags
+        tools
+      }
+      description {
+        description
+      }
+      prepTime
+      servings
+      image {
+        gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+      }
     }
   }
 `
